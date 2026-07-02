@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TCS NQT 7-Day Cracker | @venu.journey</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg:        #0B0E1A;
+    --surface:   #111527;
+    --card:      #161B2E;
+    --border:    #1E2540;
+    --accent:    #4F6EF7;
+    --gold:      #F5B730;
+    --green:     #22D3A0;
+    --red:       #F76F6F;
+    --text:      #E8ECFF;
+    --muted:     #6B7399;
+    --font:      'Space Grotesk', sans-serif;
+    --mono:      'JetBrains Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 72px 24px 60px;
+    text-align: center;
+    background: linear-gradient(160deg, #0D1230 0%, #0B0E1A 60%);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(79,110,247,.22) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(79,110,247,.12);
+    border: 1px solid rgba(79,110,247,.35);
+    border-radius: 4px;
+    padding: 5px 14px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 6vw, 58px);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -.02em;
+    margin-bottom: 18px;
+  }
+  .hero h1 span.hi { color: var(--gold); }
+  .hero h1 span.lo { color: var(--accent); }
+  .hero p.sub {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 32px;
+  }
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .pill {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 999px;
+    border: 1px solid;
+  }
+  .pill.g { color: var(--green); border-color: rgba(34,211,160,.35); background: rgba(34,211,160,.07); }
+  .pill.a { color: var(--gold);  border-color: rgba(245,183,48,.35);  background: rgba(245,183,48,.07); }
+  .pill.b { color: var(--accent);border-color: rgba(79,110,247,.35);  background: rgba(79,110,247,.07); }
+
+  .handle {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 18px;
+  }
+  .handle span { color: var(--accent); font-weight: 700; }
+
+  /* ── STATS BAR ── */
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .stat {
+    flex: 1 1 140px;
+    padding: 22px 20px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+  .stat:last-child { border-right: none; }
+  .stat .num {
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+  .stat .lbl { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+
+  /* ── MAIN CONTENT ── */
+  .content { max-width: 900px; margin: 0 auto; padding: 56px 20px 80px; }
+
+  /* ── SECTION TITLE ── */
+  .sec-title {
+    font-size: 11px;
+    font-family: var(--mono);
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .sec-h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    letter-spacing: -.01em;
+  }
+
+  /* ── DAY CARDS ── */
+  .days { display: flex; flex-direction: column; gap: 20px; margin-bottom: 64px; }
+  .day-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color .2s;
+  }
+  .day-card:hover { border-color: var(--accent); }
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .day-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .day-num.coding  { background: rgba(79,110,247,.18);  color: var(--accent); border: 1px solid rgba(79,110,247,.35); }
+  .day-num.apt     { background: rgba(245,183,48,.14);   color: var(--gold);   border: 1px solid rgba(245,183,48,.35); }
+  .day-num.cs      { background: rgba(34,211,160,.13);   color: var(--green);  border: 1px solid rgba(34,211,160,.35); }
+  .day-num.pyq     { background: rgba(247,111,111,.13);  color: var(--red);    border: 1px solid rgba(247,111,111,.35); }
+  .day-num.mock    { background: rgba(167,139,250,.15);  color: #A78BFA;       border: 1px solid rgba(167,139,250,.3); }
+  .day-num.final   { background: rgba(251,191,36,.13);   color: #FBB724;       border: 1px solid rgba(251,191,36,.3); }
+
+  .day-title { font-size: 17px; font-weight: 700; }
+  .day-focus { font-size: 12px; color: var(--muted); margin-left: auto; font-family: var(--mono); }
+
+  .day-body { padding: 20px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 580px) { .day-body { grid-template-columns: 1fr; } }
+
+  .task-group h4 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--muted);
+    margin-bottom: 10px;
+    font-family: var(--mono);
+  }
+  .task-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .task-list li {
+    font-size: 14px;
+    color: #C4CAEE;
+    padding-left: 18px;
+    position: relative;
+  }
+  .task-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 11px;
+    top: 2px;
+  }
+
+  .tip-box {
+    grid-column: 1 / -1;
+    background: rgba(79,110,247,.07);
+    border: 1px solid rgba(79,110,247,.2);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #A0AEDE;
+  }
+  .tip-box strong { color: var(--accent); }
+
+  /* ── TOPIC CHIPS ── */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .chip {
+    font-size: 12px;
+    font-family: var(--mono);
+    padding: 4px 11px;
+    border-radius: 6px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid var(--border);
+    color: #9AA3C8;
+  }
+
+  /* ── SYLLABUS TABLE ── */
+  .table-wrap { overflow-x: auto; margin-bottom: 64px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  thead tr { background: var(--surface); }
+  th {
+    text-align: left;
+    padding: 14px 18px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--muted);
+    font-family: var(--mono);
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--border);
+    color: #C4CAEE;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,.025); }
+  .td-section { font-weight: 600; color: var(--text); }
+  .td-marks { font-family: var(--mono); color: var(--gold); font-weight: 700; }
+  .td-time { font-family: var(--mono); color: var(--green); }
+  .td-diff { padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; font-family: var(--mono); }
+  .diff-h { background: rgba(247,111,111,.15); color: var(--red); }
+  .diff-m { background: rgba(245,183,48,.15);  color: var(--gold); }
+  .diff-e { background: rgba(34,211,160,.13);  color: var(--green); }
+
+  /* ── RESOURCES ── */
+  .res-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-bottom: 64px; }
+  .res-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    transition: border-color .2s, transform .15s;
+  }
+  .res-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .res-icon { font-size: 22px; margin-bottom: 10px; }
+  .res-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .res-desc { font-size: 12px; color: var(--muted); }
+  .res-tag {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 10px;
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+  .tag-free { background: rgba(34,211,160,.13); color: var(--green); }
+
+  /* ── MISTAKES ── */
+  .mistakes { margin-bottom: 64px; }
+  .mistake-list { display: flex; flex-direction: column; gap: 12px; }
+  .mistake-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--red);
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+  .mistake-no {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--red);
+    min-width: 28px;
+  }
+  .mistake-text { font-size: 14px; color: #C4CAEE; }
+  .mistake-text strong { color: var(--text); display: block; margin-bottom: 3px; font-size: 15px; }
+
+  /* ── SALARY CTA ── */
+  .salary-cta {
+    background: linear-gradient(135deg, #131A3A 0%, #0E1628 100%);
+    border: 1px solid rgba(79,110,247,.35);
+    border-radius: 16px;
+    padding: 40px 32px;
+    text-align: center;
+    margin-bottom: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .salary-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(79,110,247,.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .salary-cta h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; }
+  .salary-cta p  { color: var(--muted); font-size: 15px; margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .salary-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+  .salary-box {
+    background: rgba(255,255,255,.05);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 28px;
+    min-width: 140px;
+  }
+  .salary-box .amount {
+    font-size: 26px;
+    font-weight: 700;
+    font-family: var(--mono);
+    color: var(--gold);
+    display: block;
+  }
+  .salary-box .role { font-size: 12px; color: var(--muted); }
+  .cta-comment {
+    background: rgba(79,110,247,.12);
+    border: 1px solid rgba(79,110,247,.3);
+    border-radius: 10px;
+    padding: 14px 24px;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .cta-comment span { color: var(--accent); }
+
+  /* ── CHECKLIST ── */
+  .checklist-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 64px; }
+  @media (max-width: 540px) { .checklist-grid { grid-template-columns: 1fr; } }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 13px 16px;
+    font-size: 14px;
+    color: #C4CAEE;
+  }
+  .check-item .box {
+    width: 18px; height: 18px;
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 24px;
+    text-align: center;
+    background: var(--surface);
+  }
+  footer p { font-size: 13px; color: var(--muted); }
+  footer .author { color: var(--accent); font-weight: 700; font-family: var(--mono); }
+
+  /* ── TIMELINE DOTS ── */
+  .timeline { position: relative; padding-left: 30px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--green));
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">📅 7-Day Battle Plan · TCS NQT 2025</div>
+  <h1>Crack TCS<br><span class="hi">Digital</span> &amp; <span class="lo">Prime</span><br>in 7 Days</h1>
+  <p class="sub">A no-fluff, day-by-day strategy to go from basics to offer letter. Tested. Structured. Built for students who mean business.</p>
+  <div class="pills">
+    <span class="pill g">✓ TCS Digital — 7 LPA</span>
+    <span class="pill a">✓ TCS Prime — 9–11.5 LPA</span>
+    <span class="pill b">✓ 100% Free Resources</span>
+  </div>
+  <p class="handle">Curated by <span>@venu.journey</span></p>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><span class="num">7</span><span class="lbl">Days</span></div>
+  <div class="stat"><span class="num">100+</span><span class="lbl">Problems</span></div>
+  <div class="stat"><span class="num">4</span><span class="lbl">CS Subjects</span></div>
+  <div class="stat"><span class="num">11.5</span><span class="lbl">LPA Max</span></div>
+  <div class="stat"><span class="num">0₹</span><span class="lbl">Cost</span></div>
+</div>
+
+<!-- MAIN -->
+<div class="content">
+
+  <!-- EXAM STRUCTURE -->
+  <div class="sec-title">Before You Begin</div>
+  <h2 class="sec-h2">Know the Exam Structure</h2>
+  <div class="table-wrap" style="margin-bottom:64px">
+    <table>
+      <thead>
+        <tr>
+          <th>Section</th>
+          <th>Questions</th>
+          <th>Time</th>
+          <th>Difficulty</th>
+          <th>Weight</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-section">Numerical Ability</td>
+          <td>26</td>
+          <td class="td-time">40 min</td>
+          <td><span class="td-diff diff-m">Medium</span></td>
+          <td class="td-marks">High</td>
+        </tr>
+        <tr>
+          <td class="td-section">Verbal Ability</td>
+          <td>24</td>
+          <td class="td-time">30 min</td>
+          <td><span class="td-diff diff-e">Easy–Med</span></td>
+          <td class="td-marks">Medium</td>
+        </tr>
+        <tr>
+          <td class="td-section">Reasoning Ability</td>
+          <td>30</td>
+          <td class="td-time">50 min</td>
+          <td><span class="td-diff diff-m">Medium</span></td>
+          <td class="td-marks">High</td>
+        </tr>
+        <tr>
+          <td class="td-section">Coding (Digital/Prime)</td>
+          <td>2–3</td>
+          <td class="td-time">45 min</td>
+          <td><span class="td-diff diff-h">Hard</span></td>
+          <td class="td-marks">★ Critical</td>
+        </tr>
+        <tr>
+          <td class="td-section">Advanced Coding (Prime)</td>
+          <td>1</td>
+          <td class="td-time">20 min</td>
+          <td><span class="td-diff diff-h">Very Hard</span></td>
+          <td class="td-marks">★ Differentiator</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 7-DAY PLAN -->
+  <div class="sec-title">The Core Plan</div>
+  <h2 class="sec-h2">7-Day Preparation Roadmap</h2>
+  <div class="days">
+
+    <!-- DAY 1–2 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-num coding">Day 1–2</span>
+        <span class="day-title">🧑‍💻 Coding Foundation</span>
+        <span class="day-focus">~6 hrs/day</span>
+      </div>
+      <div class="day-body">
+        <div class="task-group">
+          <h4>DSA Topics to Cover</h4>
+          <ul class="task-list">
+            <li>Arrays & Strings (patterns, sliding window)</li>
+            <li>Hashing — frequency maps, two-sum tricks</li>
+            <li>Sorting — merge sort, quick sort logic</li>
+            <li>Binary Search — on arrays + on answer</li>
+            <li>Linked Lists — reverse, detect cycle</li>
+            <li>Recursion — subsets, permutations</li>
+            <li>Stacks & Queues — NGE, balanced brackets</li>
+          </ul>
+        </div>
+        <div class="task-group">
+          <h4>Daily Execution</h4>
+          <ul class="task-list">
+            <li>Striver TCS Sheet: solve 40–50 problems across 2 days</li>
+            <li>Use a timer (20 min/problem max)</li>
+            <li>Code in C++/Java/Python — pick ONE language</li>
+            <li>After solving — read optimal solution</li>
+            <li>Revise solved problems before sleeping</li>
+            <li>Focus: correctness first, speed second</li>
+          </ul>
+        </div>
+        <div class="tip-box">
+          <strong>⚡ Key Insight:</strong> TCS coding questions are medium-level at most. If you can solve 2 questions correctly in the coding round, you are automatically shortlisted for Digital. Solve all 3 optimally → Prime consideration.
+        </div>
+        <div class="task-group" style="grid-column:1/-1">
+          <h4>Top Topics by Frequency in TCS</h4>
+          <div class="chips">
+            <span class="chip">Two Pointer</span><span class="chip">Prefix Sum</span><span class="chip">HashMap</span><span class="chip">Stack</span><span class="chip">Binary Search</span><span class="chip">Matrix</span><span class="chip">Linked List</span><span class="chip">Recursion</span><span class="chip">Sorting</span><span class="chip">String Manipulation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-num apt">Day 3</span>
+        <span class="day-title">🧮 Aptitude Blitz</span>
+        <span class="day-focus">~5 hrs</span>
+      </div>
+      <div class="day-body">
+        <div class="task-group">
+          <h4>Quantitative Aptitude</h4>
+          <ul class="task-list">
+            <li>Number System — HCF, LCM, remainders</li>
+            <li>Percentages, Profit & Loss</li>
+            <li>Time, Speed & Distance</li>
+            <li>Work & Time problems</li>
+            <li>Probability & Permutation/Combination</li>
+            <li>Data Interpretation (tables, bar graphs)</li>
+          </ul>
+        </div>
+        <div class="task-group">
+          <h4>Reasoning + Verbal</h4>
+          <ul class="task-list">
+            <li>Syllogisms & blood relations</li>
+            <li>Coding–Decoding puzzles</li>
+            <li>Series completion & analogies</li>
+            <li>Reading Comprehension — 2 passages</li>
+            <li>Sentence correction & para-jumbles</li>
+            <li>Fill in the blanks (vocabulary)</li>
+          </ul>
+        </div>
+        <div class="tip-box">
+          <strong>⚡ Strategy:</strong> Attempt all Verbal questions first (fastest points). Skip lengthy DI questions initially. In QA, use elimination — 4 options means 25% chance; narrow to 2 options with logic then guess if needed.
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-num cs">Day 4</span>
+        <span class="day-title">💡 CS Fundamentals</span>
+        <span class="day-focus">~6 hrs</span>
+      </div>
+      <div class="day-body">
+        <div class="task-group">
+          <h4>OOP + DBMS</h4>
+          <ul class="task-list">
+            <li>4 Pillars: Encapsulation, Abstraction, Inheritance, Polymorphism</li>
+            <li>Constructor, Destructor, Virtual functions</li>
+            <li>ER Diagrams, Normalization (1NF→BCNF)</li>
+            <li>ACID Properties, Transactions</li>
+            <li>Joins — Inner, Outer, Cross, Self</li>
+            <li>SQL Queries — GROUP BY, HAVING, Subqueries</li>
+          </ul>
+        </div>
+        <div class="task-group">
+          <h4>OS + CN + SDLC</h4>
+          <ul class="task-list">
+            <li>Process vs Thread, Deadlock conditions</li>
+            <li>CPU Scheduling: FCFS, SJF, Round Robin</li>
+            <li>Virtual Memory, Paging, Segmentation</li>
+            <li>OSI 7-Layer Model (memorize each layer)</li>
+            <li>TCP vs UDP, HTTP vs HTTPS, DNS</li>
+            <li>Waterfall, Agile, Scrum — SDLC phases</li>
+          </ul>
+        </div>
+        <div class="tip-box">
+          <strong>⚡ Interview Hotspots:</strong> DBMS Joins + Normalization, OOP Polymorphism examples, Deadlock conditions (Mutual Exclusion, Hold-and-Wait, No Preemption, Circular Wait), OSI layers are asked verbatim.
+        </div>
+        <div class="task-group" style="grid-column:1/-1">
+          <h4>Must-Practice SQL Queries</h4>
+          <div class="chips">
+            <span class="chip">SELECT DISTINCT</span><span class="chip">GROUP BY + HAVING</span><span class="chip">INNER JOIN</span><span class="chip">LEFT JOIN</span><span class="chip">Subquery</span><span class="chip">ORDER BY DESC</span><span class="chip">COUNT / SUM / AVG</span><span class="chip">NOT IN / EXISTS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 5 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-num pyq">Day 5</span>
+        <span class="day-title">📜 Previous Year Questions</span>
+        <span class="day-focus">~7 hrs</span>
+      </div>
+      <div class="day-body">
+        <div class="task-group">
+          <h4>What to Do</h4>
+          <ul class="task-list">
+            <li>Solve 40+ TCS NQT previous year coding Qs</li>
+            <li>Solve 60+ aptitude PYQs (all 3 sections)</li>
+            <li>Note patterns: TCS repeats problems!</li>
+            <li>Maintain an "error log" — wrong answers</li>
+            <li>Revise only weak topics (not everything)</li>
+          </ul>
+        </div>
+        <div class="task-group">
+          <h4>Where to Find PYQs</h4>
+          <ul class="task-list">
+            <li>PrepInsta — TCS NQT 2022, 2023, 2024</li>
+            <li>TalentBattle — full sectional tests</li>
+            <li>GeeksforGeeks TCS Prep Page</li>
+            <li>YouTube search: "TCS NQT 2024 coding"</li>
+            <li>Telegram groups: TCS NQT Aspirants</li>
+          </ul>
+        </div>
+        <div class="tip-box">
+          <strong>⚡ Pattern Alert:</strong> TCS has recycled 30–40% questions from previous years in NQT. Practicing PYQs alone can boost your score by 15–20%. This day is not optional.
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 6 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-num mock">Day 6</span>
+        <span class="day-title">🎯 Mock Test + Interview Prep</span>
+        <span class="day-focus">~8 hrs</span>
+      </div>
+      <div class="day-body">
+        <div class="task-group">
+          <h4>Mock Test Strategy</h4>
+          <ul class="task-list">
+            <li>Attempt ONE full-length TCS NQT mock</li>
+            <li>Strictly follow real exam time limits</li>
+            <li>Analyse every wrong answer after</li>
+            <li>Attempt coding on an actual online compiler</li>
+            <li>Aim: Verbal ≥ 18/24, QA ≥ 18/26, Coding 2/3</li>
+          </ul>
+        </div>
+        <div class="task-group">
+          <h4>Technical Interview Prep</h4>
+          <ul class="task-list">
+            <li>"Tell me about yourself" — prepare 90-sec script</li>
+            <li>Explain all 4 OOP concepts with code example</li>
+            <li>Explain your project line-by-line</li>
+            <li>Practise 2 live coding questions on paper</li>
+            <li>Prepare STAR answers for HR questions</li>
+          </ul>
+        </div>
+        <div class="tip-box">
+          <strong>⚡ Interview Mindset:</strong> TCS interviewers care more about HOW you think than what you know. If you don't know an answer, say "Let me think step by step…" and reason aloud. Never say "I don't know" and stop — always attempt.
+        </div>
+        <div class="task-group">
+          <h4>Most Asked HR Questions</h4>
+          <ul class="task-list">
+            <li>Why TCS?</li>
+            <li>Strength & Weakness</li>
+            <li>Are you willing to relocate?</li>
+            <li>Where do you see yourself in 5 years?</li>
+            <li>What makes you different from others?</li>
+          </ul>
+        </div>
+        <div class="task-group">
+          <h4>Technical Questions Bank</h4>
+          <ul class="task-list">
+            <li>Difference: Overloading vs Overriding</li>
+            <li>What is a Deadlock? 4 conditions?</li>
+            <li>3NF vs BCNF with example</li>
+            <li>Write SELECT with JOIN query</li>
+            <li>What is OSI model Layer 4?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 7 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-num final">Day 7</span>
+        <span class="day-title">✨ Final Revision + Rest</span>
+        <span class="day-focus">~4 hrs + Rest</span>
+      </div>
+      <div class="day-body">
+        <div class="task-group">
+          <h4>Morning Session (2 hrs)</h4>
+          <ul class="task-list">
+            <li>Revise your error log from Days 1–6</li>
+            <li>Glance at ALL coding patterns (not full solutions)</li>
+            <li>Review your "Tell me about yourself" script</li>
+            <li>Read your 1-page CS summary notes</li>
+          </ul>
+        </div>
+        <div class="task-group">
+          <h4>Afternoon Session (2 hrs)</h4>
+          <ul class="task-list">
+            <li>Attempt a 1-hour mini aptitude test</li>
+            <li>Revise formula sheet: %, P&L, speed, time</li>
+            <li>Revise SQL query types</li>
+            <li>Pack your documents & ID proof</li>
+          </ul>
+        </div>
+        <div class="tip-box">
+          <strong>⚡ The Golden Rule:</strong> Stop studying by 6 PM. Have a good meal. Sleep for at least 7–8 hours. A rested brain solves 30% faster. The last-minute panic loop is your biggest enemy — don't fall for it.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /days -->
+
+  <!-- RESOURCES -->
+  <div class="sec-title">Free Resources</div>
+  <h2 class="sec-h2">Best Free Platforms to Use</h2>
+  <div class="res-grid">
+    <div class="res-card">
+      <div class="res-icon">🔥</div>
+      <div class="res-name">Take U Forward</div>
+      <div class="res-desc">Striver TCS Sheet — 100 hand-picked problems with video solutions.</div>
+      <span class="res-tag tag-free">FREE</span>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">🌐</div>
+      <div class="res-name">GeeksforGeeks</div>
+      <div class="res-desc">TCS Prep Sheet + CS Fundamentals (OOP, DBMS, OS, CN) with examples.</div>
+      <span class="res-tag tag-free">FREE</span>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">📊</div>
+      <div class="res-name">PrepInsta</div>
+      <div class="res-desc">TCS NQT Hub — PYQs, mock tests, aptitude formulas, topic-wise tests.</div>
+      <span class="res-tag tag-free">FREE</span>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">⚔️</div>
+      <div class="res-name">TalentBattle</div>
+      <div class="res-desc">Full-length TCS mock tests with sectional timer and score analysis.</div>
+      <span class="res-tag tag-free">FREE</span>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">📚</div>
+      <div class="res-name">CareerRide</div>
+      <div class="res-desc">Topic-wise aptitude MCQs with explanation. Great for quick quizzes.</div>
+      <span class="res-tag tag-free">FREE</span>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">🎬</div>
+      <div class="res-name">FreshersNow</div>
+      <div class="res-desc">Aptitude videos, verbal preparation, placement papers — all-in-one.</div>
+      <span class="res-tag tag-free">FREE</span>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">💻</div>
+      <div class="res-name">LeetCode</div>
+      <div class="res-desc">Easy & Medium problems filtered by tag. Filter: Array, String, HashMap.</div>
+      <span class="res-tag tag-free">FREE</span>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">📝</div>
+      <div class="res-name">HackerEarth</div>
+      <div class="res-desc">Practice in TCS-style interface. Timed coding challenges & submissions.</div>
+      <span class="res-tag tag-free">FREE</span>
+    </div>
+  </div>
+
+  <!-- MISTAKES -->
+  <div class="mistakes">
+    <div class="sec-title">What Not To Do</div>
+    <h2 class="sec-h2">5 Mistakes That Kill Chances</h2>
+    <div class="mistake-list">
+      <div class="mistake-item">
+        <span class="mistake-no">01</span>
+        <div class="mistake-text">
+          <strong>Learning new topics instead of mastering exam topics</strong>
+          TCS tests a defined set of topics every year. Chasing new DSA concepts 3 days before the exam is the fastest way to score 0 in coding.
+        </div>
+      </div>
+      <div class="mistake-item">
+        <span class="mistake-no">02</span>
+        <div class="mistake-text">
+          <strong>Skipping Aptitude thinking "I'm a coder"</strong>
+          The aptitude cutoff filters out candidates before they even see the coding round. A low aptitude score = no coding round access.
+        </div>
+      </div>
+      <div class="mistake-item">
+        <span class="mistake-no">03</span>
+        <div class="mistake-text">
+          <strong>Not practising under exam conditions</strong>
+          Solving problems without a timer gives a false sense of confidence. TCS has per-section time limits. Practice with strict timers from Day 3.
+        </div>
+      </div>
+      <div class="mistake-item">
+        <span class="mistake-no">04</span>
+        <div class="mistake-text">
+          <strong>Ignoring the interview round</strong>
+          Students clear NQT and then fumble basic OOP or SQL in the interview. Tech + HR prep together = complete offer letter.
+        </div>
+      </div>
+      <div class="mistake-item">
+        <span class="mistake-no">05</span>
+        <div class="mistake-text">
+          <strong>Burning out the night before the exam</strong>
+          An exhausted brain loses 30% cognitive speed. The last-minute cramming panic is real — and almost always hurts more than it helps.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="sec-title">Final Revision Checklist</div>
+  <h2 class="sec-h2">Before You Walk Into the Exam</h2>
+  <div class="checklist-grid">
+    <div class="check-item"><div class="box"></div>Solved Striver TCS Sheet (min 70/100)</div>
+    <div class="check-item"><div class="box"></div>Practised 3+ full aptitude mock tests</div>
+    <div class="check-item"><div class="box"></div>Revised OOP — 4 pillars with code examples</div>
+    <div class="check-item"><div class="box"></div>Revised DBMS — Normalization + Joins + ACID</div>
+    <div class="check-item"><div class="box"></div>Revised OS — Scheduling + Memory + Deadlock</div>
+    <div class="check-item"><div class="box"></div>Revised CN — OSI layers + TCP/IP + HTTP</div>
+    <div class="check-item"><div class="box"></div>Practised 5+ previous TCS NQT coding Qs</div>
+    <div class="check-item"><div class="box"></div>SQL queries practised on compiler</div>
+    <div class="check-item"><div class="box"></div>Aptitude formula sheet revised</div>
+    <div class="check-item"><div class="box"></div>Prepared "Tell me about yourself" script</div>
+    <div class="check-item"><div class="box"></div>Resume-based answers prepared</div>
+    <div class="check-item"><div class="box"></div>Documents ready (ID, admit card, resume)</div>
+    <div class="check-item"><div class="box"></div>Good meal planned + 7–8 hours sleep</div>
+    <div class="check-item"><div class="box"></div>Logged into TCS NQT portal & verified slot</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="salary-cta">
+    <h3>Your Next Offer Letter Could Look Like This 👇</h3>
+    <p>Students who follow this exact 7-day roadmap consistently land these packages at TCS. You're one structured week away.</p>
+    <div class="salary-row">
+      <div class="salary-box">
+        <span class="amount">7 LPA</span>
+        <span class="role">TCS Digital</span>
+      </div>
+      <div class="salary-box">
+        <span class="amount">9–11.5 LPA</span>
+        <span class="role">TCS Prime</span>
+      </div>
+    </div>
+    <div class="cta-comment">
+      Comment <span>"TCS"</span> and I'll send you the complete prep PDF → 7-Day Roadmap · Resource Links · Coding Sheets · PYQs · Interview Questions · Final Checklist
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<footer>
+  <p>Crafted with ❤️ by <span class="author">@venu.journey</span> &nbsp;·&nbsp; Share this with every friend appearing for TCS NQT &nbsp;·&nbsp; One share could help someone secure a 7–11.5 LPA offer 🚀</p>
+</footer>
+
+</body>
+</html>
